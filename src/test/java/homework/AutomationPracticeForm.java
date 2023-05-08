@@ -9,8 +9,7 @@ import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class AutomationPracticeForm {
 
@@ -25,22 +24,45 @@ public class AutomationPracticeForm {
     void testRegistrationForm() {
         String firstName = "John";
         String lastName = "Doe";
-        File file = new File("src/main/resources/picture.jpg");
+        String userEmail = "some-email@test.com";
+        String userGender = "Male";
+        String userNumber = "0123456789";
+        String birthMonth = "August";
+        String birthYear = "1995";
+        String userSubject = "Computer Science";
+        String currentAddress = "Address";
+        String userHobbies = "Reading";
+        String userState = "Uttar Pradesh";
+        String userCity = "Agra";
+
+
 
         open("/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        executeJavaScript("$('footer').remove()");
+
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
-        $("#userEmail").setValue("some-email@test.com");
-        $(byText("Male")).click();
-        $("#userNumber").setValue("77777777777");
-        $("#uploadPicture").uploadFile(file);
-        $("#currentAddress").setValue("Address");
-        $(byText("Reading")).click();
+        $("#userEmail").setValue(userEmail);
+        $("#genterWrapper").$(byText(userGender)).click();
+        $("#userNumber").setValue(userNumber);
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__month-select").selectOption(birthMonth);
+        $(".react-datepicker__year-select").selectOption(birthYear);
+        $(".react-datepicker__day--031:not(.react-datepicker__day--outside-month)").click();
+        $("#subjectsInput").setValue(userSubject).pressEnter();
+        $("#uploadPicture").uploadFile(new File("src/main/resources/picture.jpg"));
+        $("#currentAddress").setValue(currentAddress);
+        $("#hobbiesWrapper").$(byText(userHobbies)).click();
         $("#state").click();
-        $(byText("Uttar Pradesh")).click();
+        $(byText(userState)).click();
         $("#city").click();
-        $(byText("Agra")).click();
+        $(byText(userCity)).click();
         $("#submit").pressEnter();
+
+
         $(".modal-header").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text(firstName), text(lastName),
+                text(userEmail), text(userNumber));
     }
 }
