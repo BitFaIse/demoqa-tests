@@ -51,7 +51,7 @@ public class AutomationPracticeForm {
         $(".react-datepicker__year-select").selectOption(birthYear);
         $(".react-datepicker__day--031:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue(userSubject).pressEnter();
-        $("#uploadPicture").uploadFile(new File("src/main/resources/picture.jpg"));
+        $("#uploadPicture").uploadFromClasspath("picture.jpg");
         $("#currentAddress").setValue(currentAddress);
         $("#hobbiesWrapper").$(byText(userHobbies)).click();
         $("#state").click();

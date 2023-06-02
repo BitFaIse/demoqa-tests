@@ -1,4 +1,4 @@
-package locators;
+package examples.locators;
 
 import org.junit.jupiter.api.Test;
 
