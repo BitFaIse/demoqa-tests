@@ -1,6 +1,8 @@
 package homework;
 
 import com.codeborne.selenide.Configuration;
+import com.github.javafaker.Faker;
+import data.Genders;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,15 +24,18 @@ public class AutomationPracticeForm {
     @Test
     @DisplayName("Проверка заполнения и отправки формы")
     void testRegistrationForm() {
-        String firstName = "John";
-        String lastName = "Doe";
-        String userEmail = "some-email@test.com";
-        String userGender = "Male";
+        Faker faker = new Faker();
+
+
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String userEmail = faker.internet().emailAddress();
+        Genders genders = faker.options().option(Genders.values());
         String userNumber = "0123456789";
         String birthMonth = "August";
         String birthYear = "1995";
         String userSubject = "Computer Science";
-        String currentAddress = "Address";
+        String currentAddress = faker.address().streetAddress();
         String userHobbies = "Reading";
         String userState = "Uttar Pradesh";
         String userCity = "Agra";
@@ -44,7 +49,7 @@ public class AutomationPracticeForm {
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
-        $("#genterWrapper").$(byText(userGender)).click();
+        $("#genterWrapper").$(byText(genders.toString())).click();
         $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption(birthMonth);

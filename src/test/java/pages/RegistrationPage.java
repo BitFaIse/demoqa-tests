@@ -1,6 +1,8 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import data.Genders;
+import data.Subjects;
 import pages.components.CalendarComponent;
 import pages.components.FileUploadComponent;
 import pages.components.RegistrationResultsModal;
@@ -61,8 +63,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setGender(String value) {
-        genderInput.$(byText(value)).click();
+    public RegistrationPage setGender(Genders value) {
+        genderInput.$(byText(value.toString())).click();
 
         return this;
     }
@@ -91,8 +93,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setSubject(String value) {
-        subjectInput.setValue(value).pressEnter();
+    public RegistrationPage setSubject(Subjects value) {
+        subjectInput.setValue(value.toString()).pressEnter();
 
         return this;
     }
