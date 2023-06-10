@@ -18,9 +18,9 @@ public class TestBaseExtended extends TestBase{
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = "chrome";
-        Configuration.browserVersion = "113 .0";
+        Configuration.browserVersion = "113.0";
         Configuration.browserSize = "1920x1080";
-        Configuration.remote = "http://192.168.31.160:4444/wd/hub";
+        Configuration.remote = "http://192.168.31.160:8082/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object> of(
