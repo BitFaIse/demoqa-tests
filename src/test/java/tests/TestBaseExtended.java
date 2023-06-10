@@ -17,10 +17,10 @@ public class TestBaseExtended extends TestBase{
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = "chrome";
-        Configuration.browserVersion = "113.0";
-        Configuration.browserSize = "1920x1080";
-        Configuration.remote = "http://192.168.31.160:8082/wd/hub";
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "113.0");
+        Configuration.browserSize = System.getProperty("browserSize","1920x1080");
+        Configuration.remote = System.getProperty("selenoid","http://192.168.31.160:8082/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object> of(
