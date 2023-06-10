@@ -6,7 +6,6 @@ import data.Subjects;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static utils.RandomUtils.GenerateRandom.cityGenerator;
 
 public class AutomationPracticeFormWithPageObject extends TestBase {
 
@@ -27,8 +26,9 @@ public class AutomationPracticeFormWithPageObject extends TestBase {
         Subjects subjects = faker.options().option(Subjects.values());
         String currentAddress = faker.address().fullAddress();
         String userHobbies = faker.options().option("Sports", "Reading", "Music");
-        String userState = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
-        String userCity = cityGenerator(userState);
+        String userState = "Uttar Pradesh";
+        String userCity =  "Agra";
+
 
         registrationPage.openPage()
                 .setFirstName(firstName)

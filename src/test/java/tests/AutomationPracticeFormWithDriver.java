@@ -3,12 +3,10 @@ package tests;
 import com.github.javafaker.Faker;
 import data.Genders;
 import data.Subjects;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
-import static utils.RandomUtils.GenerateRandom.cityGenerator;
 
 public class AutomationPracticeFormWithDriver extends TestBaseExtended {
 
@@ -29,8 +27,8 @@ public class AutomationPracticeFormWithDriver extends TestBaseExtended {
         Subjects subjects = faker.options().option(Subjects.values());
         String currentAddress = faker.address().fullAddress();
         String userHobbies = faker.options().option("Sports", "Reading", "Music");
-        String userState = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
-        String userCity = cityGenerator(userState);
+        String userState = "Uttar Pradesh";
+        String userCity =  "Agra";
 
         step("Открываем и заполняем форму", () -> {
             registrationPage.openPage()
