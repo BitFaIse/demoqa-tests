@@ -12,7 +12,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.Map;
 
 
-public class TestBaseExtended {
+public class TestBaseExtended extends TestBase{
 
     @BeforeAll
     static void beforeAll() {

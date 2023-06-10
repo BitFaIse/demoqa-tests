@@ -26,8 +26,6 @@ public class AutomationPracticeForm  extends TestBaseExtended {
     }
 
     @Test
-    @Tag("remote")
-    @Step("Проверка заполнения и отправки формы")
     void testRegistrationForm() {
         Faker faker = new Faker();
 
